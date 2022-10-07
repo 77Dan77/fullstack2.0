@@ -1,0 +1,33 @@
+{% extends 'mainApp/base.html' %}
+
+{% block title %}
+    Update
+{% endblock %}
+
+{% block content %}
+     <main>
+        <div class="circle"></div>
+        <main class="register-form-container">
+            <h1 class="form-title">
+                Update
+            </h1>
+
+    <form method="POST">
+        {% csrf_token %}
+       <div class="form-fields">
+            <div class="form-field">
+                <input type="text" placeholder="{{ user.username }}" name="username">
+            </div>
+            <div class="form-field">
+                <input type="email" placeholder="{{ user.email }}" name="email">
+            </div>
+            <div class="form-field">
+                <input type="password" placeholder="{{ user.password }}" name="password" minlength="6" required>
+            </div>
+        </div>
+        <input type="submit" value="Сохранить" >
+    </form>
+     <a href="/">Назад</a>
+    </main>
+    </main>
+{% endblock %}

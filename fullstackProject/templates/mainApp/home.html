@@ -1,0 +1,66 @@
+{% extends 'mainApp/base.html' %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+
+{% block content %}
+     <main>
+        <div class="circle"></div>
+        <main class="register-form-container">
+            <h1 class="form-title">
+                    CRUD
+            </h1>
+
+
+    <form method="POST" action="create/">
+        {% csrf_token %}
+
+        <div class="form-fields">
+            <div class="form-field">
+                <input type="text" placeholder="username" name="username">
+            </div>
+            <div class="form-field">
+                <input type="email" placeholder="email" name="email">
+            </div>
+            <div class="form-field">
+                <input type="password" placeholder="password" name="password" minlength="6" required>
+            </div>
+        </div>
+{#        <p>#}
+{#            <label>Username</label><br>#}
+{#            <input type="text" name="username" />#}
+{#        </p>#}
+{#        <p>#}
+{#            <label>Email</label><br>#}
+{#            <input type="email" name="email" />#}
+{#        </p>#}
+{#        <p>#}
+{#            <label>Password</label><br>#}
+{#            <input type="password" name="password" minlength="6" required />#}
+{#        </p>#}
+        <input style="margin: 0 auto; display: block;" type="submit" value="Сохранить" >
+    </form>
+
+
+    {% if people.count > 0 %}
+    <table style="margin-top: 50px;">
+        <thead><th>Username</th><th>Email</th><th></th></thead>
+        {% for user in people %}
+        <tr style="margin-top: 20px;">
+{#            <td>{{ user.id }}</td>#}
+            <td>{{ user.username }}</td>
+            <td>{{ user.email }}</td>
+            <td><a style="font-size: 13px; color: darkblue;" href="edit/{{user.id}}">Edit</a></td>
+            <td><a style="font-size: 13px; color: red;" href="delete/{{user.id}}">Delete</a></td>
+
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+
+    </main>
+    </main>
+{% endblock %}
+
